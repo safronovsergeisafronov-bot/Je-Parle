@@ -45,10 +45,12 @@ const App = () => {
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10">
                 <img 
-                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ilya" 
-                  alt="Ilya" 
+                  src="./assets/avatar.svg" 
+                  alt="Илья" 
                   className="w-full h-full object-cover" 
-                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Ilya";
+                  }}
                 />
               </div>
               <span className="text-xl font-medium tracking-tight">Гаврилов Илья</span>
@@ -100,17 +102,17 @@ const App = () => {
           </div>
         </section>
 
-        {/* Right Section (Image with optimization) */}
+        {/* Right Section (Image from local assets folder) */}
         <section className="flex-1 rounded-[40px] relative min-h-[600px] lg:min-h-[850px] overflow-hidden group">
-          {/* Main Visual Image */}
           <img 
-            src="https://r.jina.ai/i/6c41b80d0d8641bc8836528d2274488b" 
+            src="./assets/hero-image.png" 
             alt="Je Parle! Book and Audio Interface" 
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
-            loading="lazy"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://r.jina.ai/i/6c41b80d0d8641bc8836528d2274488b";
+            }}
           />
           
-          {/* Overlay for the button context */}
           <header className="absolute top-0 left-0 right-0 p-8 md:p-12 flex justify-end z-10">
             <button className="px-8 py-3 rounded-full bg-white/30 backdrop-blur-md text-black/90 font-bold hover:bg-white/50 transition-all border border-white/20 shadow-xl tracking-tight">
               Связаться
